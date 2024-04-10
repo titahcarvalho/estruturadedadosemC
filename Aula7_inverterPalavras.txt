@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <limits.h>
+
+void exibirBinario(const void *endereco, size_t tamanho) {
+    const unsigned char *bytes = (const unsigned char *)endereco;
+
+    for (size_t i = 0; i < tamanho; i++) {
+        unsigned char byte = bytes[i];
+        
+        for (int j = 7; j >= 0; j--) {
+            unsigned char bit = (byte >> j) & 1;
+            printf("%d", bit); 
+        }
+        printf(" ");
+    }
+    printf("\n");
+}
+
+void inverterString(char* texto){
+      char* inicio = texto;
+      char* fim = texto; 
+      char temp;
+      while (*fim!= '\0'){
+        fim++;
+      }
+      fim--;
+      
+      while(inicio < fim){
+          temp = *inicio;
+          *inicio = *fim;
+          *fim = temp;
+          inicio++;
+          fim--;
+      }
+         //*inicio = 0;
+         //*fim = 4;
+         //*inicio = 4;
+         //*fim = 0;
+         //inicio++;
+         //fim--;/*
+    }
+
+int main() {
+    
+    char texto[] = "abcdefgh";
+    
+    printf("(%s)\n", texto);
+    inverterString(texto);
+    printf("(%s)\n", texto);
+
+    
+    
+    return 0;
+}
+S

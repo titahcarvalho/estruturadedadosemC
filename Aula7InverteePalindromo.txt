@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+void inverterString(char* texto){
+      char* inicio = texto;
+      char* fim = texto; 
+      char temp;
+      while (*fim!= '\0'){
+        fim++;
+      }
+      fim--;
+      
+      while(inicio < fim){
+          temp = *inicio;
+          *inicio = *fim;
+          *fim = temp;
+          inicio++;
+          fim--;
+      }
+         //*inicio = 0;
+         //*fim = 4;
+         //*inicio = 4;
+         //*fim = 0;
+         //inicio++;
+         //fim--;/*
+    }
+
+int main() {
+    
+    char texto[] = "ana";
+    
+    printf("(%s)\n", texto);
+    inverterString(texto);
+    printf("(%s)\n", texto);
+    
+    int palindromo = 1; // Inicialmente assumimos que é um palíndromo
+    
+    int tamanho = strlen(texto);
+    for (int i = 0; i < tamanho / 2; i++) {
+        if (texto[i] != texto[tamanho - i - 1]) {
+            palindromo = 0; // Não é um palíndromo
+            break;
+        }
+    }
+    
+    if (palindromo) {
+        printf("A string é um palíndromo.\n");
+    } else {
+        printf("A string não é um palíndromo.\n");
+    }
+
+
+    
+    
+    return 0;
+}
