@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <limits.h>
+
+void exibirBinario(const void *endereco, size_t tamanho) {
+    const unsigned char *bytes = (const unsigned char *)endereco;
+
+    for (size_t i = 0; i < tamanho; i++) {
+        unsigned char byte = bytes[i];
+        
+        for (int j = 7; j >= 0; j--) {
+            unsigned char bit = (byte >> j) & 1;
+            printf("%d", bit); 
+        }
+        printf(" ");
+    }
+    printf("\n");
+}
+
+int main() {
+    int numeroInt = 0;  // usa o "short - utiliza 2 bytes", "long long - utiliza 8 bytes", "char - utiliza apenas um byte com 8 bits e estoura em 127 e o "unsigned char" até o 128"
+//há a opção do uso de "unsigned" para int. 
+    exibirBinario(&numeroInt, sizeof(numeroInt));
+    
+    numeroInt = 1;
+    exibirBinario(&numeroInt, sizeof(numeroInt));
+
+    
+    for(int i = 0; i < 16; i++){
+        numeroInt *= 2;
+        printf("%d\n", numeroInt);
+        exibirBinario(&numeroInt, sizeof(numeroInt));
+        printf("\n");
+    }
+    
+    return 0;
+}

@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <limits.h>
+
+void exibirBinario(const void *endereco, size_t tamanho) {
+    const unsigned char *bytes = (const unsigned char *)endereco;
+
+    for (size_t i = 0; i < tamanho; i++) {
+        unsigned char byte = bytes[i];
+        
+        for (int j = 7; j >= 0; j--) {
+            unsigned char bit = (byte >> j) & 1;
+            printf("%d", bit); 
+        }
+        printf(" ");
+    }
+    printf("\n");
+}
+
+int main() {
+    
+    char texto [] = "abcdefgh";//o A é 97, então b= 98, c = 99....
+    exibirBinario(texto,sizeof(texto));
+   
+    char* p = texto;
+    
+    *p = 'c';
+    
+    p++; //aponta a partir da segunda posição, b no caso
+    p++;
+    *p = 'a';  //para trocar por "cbadefgh"
+    
+        printf("(%s)", texto);
+    
+   /* printf("(%s)\n", p);
+    p++; //vai apontando para o byte seguinte
+    printf("(%s)\n", p);
+    
+    short int* p2 = ( short int *) texto;
+    p2++;
+    printf("(%s)\n", p2);
+    
+    p2++;
+    printf("(%s)\n", p2); //aconteceu que pulou um byte, o que será?
+    
+    int* p3 = (int*) texto;
+    p3++;
+    printf("(%s)\n", p3);*/
+    
+    
+    
+    return 0;
+}

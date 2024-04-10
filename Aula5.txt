@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <limits.h>
+
+void exibirBinario(const void *endereco, size_t tamanho) {
+    const unsigned char *bytes = (const unsigned char *)endereco;
+
+    for (size_t i = 0; i < tamanho; i++) {
+        unsigned char byte = bytes[i];
+        
+        for (int j = 7; j >= 0; j--) {
+            unsigned char bit = (byte >> j) & 1;
+            printf("%d", bit); 
+        }
+        printf(" ");
+    }
+    printf("\n");
+}
+
+int main() {
+    
+    float f1 = 1;
+    printf("(%f)\n", f1);
+    exibirBinario(&f1, sizeof(f1));
+    
+    float f2 = 2;
+    printf("(%f)\n", f2);
+    exibirBinario(&f2, sizeof(f2));
+    
+    float f3 = 3;
+    printf("(%f)\n", f3);
+    exibirBinario(&f3, sizeof(f3));
+    
+    float f4 = 0.1;
+    printf("(%f)\n", f4);
+    exibirBinario(&f4, sizeof(f4));
+    
+    float f5 = 0.01;
+    printf("(%f)\n", f5);
+    exibirBinario(&f5, sizeof(f5));
+    
+    float f6 = -1;
+    printf("(%f,%f)\n", f1, f6);
+    exibirBinario(&f1, sizeof(f1));
+    exibirBinario(&f6, sizeof(f6));
+    
+    double f7 = -0.01;  //no caso o double usa 8 bytes com 64 bits, é possível representqar números maiores que o float e numeros mais precisos
+   
+    exibirBinario(&f7, sizeof(f7));
+    /* pq é chamado de um numero de ponto flutuante? - para numeros altos há variações, numeros mais próximos de 0 possui uma maior precisão com float, ponto que enão é fixo, utiliza uma determinada quantidade de bits para a parte inteira e outra para a parte fracionária. REVER código hamming 7,4 e aulas de Eduardo. */
+    
+    
+    
+   /* int i = 97;
+    char s[] = "ab\0";
+    char a = 'a'; 
+    
+  exibirBinario(&a, 1); //&passando o endereço
+  exibirBinario(&i, 4);
+  exibirBinario(&s, 4);
+  
+ // int* pi = &i;
+   int* pi = (int *)s; //fazer com que o pi aponte para s;
+  
+  exibirBinario(pi, 4);  //o ponteiro está apontando para a mesma area de memoria do i
+  
+  printf("(%d)",*pi);
+  
+  
+  
+   char a = 'a'; 
+   char b = 'b'; 
+   char aM = 'A'; 
+   
+   char string1[] = "abAbabab";
+   
+   exibirBinario(&a, sizeof(a));
+   exibirBinario(&b, sizeof(b));
+   exibirBinario(&aM, sizeof(aM));
+   
+   
+   
+   exibirBinario(&string1, sizeof(string1));
+   
+   
+   printf("Caracter a: %c\n", a);
+   
+   printf("Caracter a: %d\n",(int) a);
+   
+   printf("Caracter b: %d\n",(int) b);
+   
+   printf("Caracter A: %d\n",(int) aM);
+   
+   printf("String: %s\n",string1);*/
+   
+    return 0;
+}

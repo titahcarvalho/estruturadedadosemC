@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <limits.h>
+
+void exibirBinario(const void *endereco, size_t tamanho) {
+    const unsigned char *bytes = (const unsigned char *)endereco;
+
+    for (size_t i = 0; i < tamanho; i++) {
+        unsigned char byte = bytes[i];
+        
+        for (int j = 7; j >= 0; j--) {
+            unsigned char bit = (byte >> j) & 1;
+            printf("%d", bit); 
+        }
+        printf(" ");
+    }
+    printf("\n");
+}
+
+int main() {
+    int numero = 0;
+    exibirBinario(&numero, sizeof(numero));
+    numero = 1;
+    exibirBinario(&numero, sizeof(numero));
+    numero = 2;
+    exibirBinario(&numero, sizeof(numero));
+    numero = 128;
+    exibirBinario(&numero, sizeof(numero));
+    numero = 255;
+    exibirBinario(&numero, sizeof(numero));
+    numero = 256;
+    exibirBinario(&numero, sizeof(numero));
+    numero = 512;
+    exibirBinario(&numero, sizeof(numero));
+    
+    numero = INT_MAX;
+    exibirBinario(&numero, sizeof(numero));
+    
+    return 0;
+}
